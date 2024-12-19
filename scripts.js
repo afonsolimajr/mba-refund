@@ -4,6 +4,9 @@ const expense = document.getElementById("expense");
 const category = document.getElementById("category");
 const expenseList = document.querySelector("ul");
 const expensesQuantity = document.querySelector("aside header p span");
+const expensesTotal = document.querySelector("aside header h2");
+
+updateTotals();
 
 amount.oninput = (event) => {
     let value = amount.value.replace(/\D/g, "");
@@ -81,6 +84,25 @@ function updateTotals() {
     try {
         const items = expenseList.children;
         expensesQuantity.textContent = `${items.length} ${items.length > 1 ? "despesas" : "despesa"}`;
+
+        let total = 0;
+
+        for (let item of items) {
+            const itemAmount = item.querySelector(".expense-amount");
+
+            let value = itemAmount.textContent.replace(/[^\d]/g, "").replace(",", ".");
+
+            value = parseFloat(value);
+
+            if (isNaN(value)) {
+                return alert("Não foi possível clalcular o total. O valor parece não ser um número");
+            }
+
+            total += Number(value / 100);
+        }
+
+        expensesTotal.textContent = total;
+        console.log(total)
     } catch (error) {
         console.log(error);
         alert("Não foi possível atualizar os totais.")
