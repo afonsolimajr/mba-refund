@@ -55,8 +55,13 @@ function expenseAdd(newExpense) {
         const expenseCategory = document.createElement("span");
         expenseCategory.textContent = newExpense.category_name;
 
+        const expenseAmount = document.createElement("span");
+        expenseAmount.classList.add("expense-amount");
+        expenseAmount.innerHTML = `<small>R$</small>${newExpense.amount.toUpperCase().replace("R$", "")}`;
+
+
         expenseInfo.append(expenseName, expenseCategory);
-        expenseItem.append(expenseIcon, expenseInfo);
+        expenseItem.append(expenseIcon, expenseInfo, expenseAmount);
         expenseList.append(expenseItem);
 
     } catch (error) {
