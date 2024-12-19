@@ -101,7 +101,7 @@ function updateTotals() {
             total += Number(value / 100);
         }
 
-        expensesTotal.textContent = total;
+        expensesTotal.innerHTML = `<small>R$</small>${formatCurrencyBRL(total).toUpperCase().replace("R$", "")}`;
         console.log(total)
     } catch (error) {
         console.log(error);
