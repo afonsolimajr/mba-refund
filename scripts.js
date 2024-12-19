@@ -2,6 +2,7 @@ const form = document.querySelector("form");
 const amount = document.getElementById("amount");
 const expense = document.getElementById("expense");
 const category = document.getElementById("category");
+const expenseList = document.querySelector("ul");
 
 amount.oninput = (event) => {
     let value = amount.value.replace(/\D/g, "");
@@ -38,7 +39,16 @@ form.onsubmit = (event) => {
 
 function expenseAdd(newExpense) {
     try {
-        throw new Error("Erro de teste");
+        const expenseItem = document.createElement("li");
+        expenseItem.classList.add("expense");
+
+        const expenseIcon = document.createElement("img");
+        expenseIcon.setAttribute("src", `img/${newExpense.category_id}.svg`);
+        expenseIcon.setAttribute("alt", newExpense.category_name);
+
+        expenseItem.append(expenseIcon);
+        expenseList.append(expenseItem);
+
     } catch (error) {
         alert("Não foi possível adicionar a despesa");
         console.log(error);
