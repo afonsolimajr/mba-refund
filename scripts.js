@@ -6,7 +6,58 @@ const expenseList = document.querySelector("ul");
 const expensesQuantity = document.querySelector("aside header p span");
 const expensesTotal = document.querySelector("aside header h2");
 
-updateTotals();
+function loadSampleData() {
+    const sampleExpenses = new Array(
+        {
+            id: new Date().getTime(),
+            expense: "Almoço",
+            category_id: "food",
+            category_name: "Alimentação",
+            amount: "471,47",
+            created_at: new Date(),
+        },
+        {
+            id: new Date().getTime(),
+            expense: "Diárias",
+            category_id: "accommodation",
+            category_name: "Hospedagem",
+            amount: "799,80",
+            created_at: new Date(),
+        },
+        {
+            id: new Date().getTime(),
+            expense: "Cópia de chave",
+            category_id: "services",
+            category_name: "Serviços",
+            amount: "55,00",
+            created_at: new Date(),
+        },
+        {
+            id: new Date().getTime(),
+            expense: "Táxi",
+            category_id: "transport",
+            category_name: "Transporte",
+            amount: "389,90",
+            created_at: new Date(),
+        },
+        {
+            id: new Date().getTime(),
+            expense: "Material de escritório",
+            category_id: "others",
+            category_name: "Outros",
+            amount: "235,40",
+            created_at: new Date(),
+        },
+    );
+
+
+    for (let expense of sampleExpenses) {
+        expenseAdd(expense);
+    }
+}
+
+loadSampleData();
+// updateTotals();
 
 amount.oninput = (event) => {
     let value = amount.value.replace(/\D/g, "");
