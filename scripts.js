@@ -37,7 +37,6 @@ form.onsubmit = (event) => {
         created_at: new Date(),
     }
 
-    console.log(newExpense);
     expenseAdd(newExpense);
 }
 
@@ -72,11 +71,13 @@ function expenseAdd(newExpense) {
         expenseItem.append(expenseIcon, expenseInfo, expenseAmount, removeIcon);
         expenseList.append(expenseItem);
 
+        formClear();
+
         updateTotals();
 
     } catch (error) {
-        alert("Não foi possível adicionar a despesa");
         console.log(error);
+        alert("Não foi possível adicionar a despesa");
     }
 }
 
@@ -102,20 +103,22 @@ function updateTotals() {
         }
 
         expensesTotal.innerHTML = `<small>R$</small>${formatCurrencyBRL(total).toUpperCase().replace("R$", "")}`;
-        console.log(total)
     } catch (error) {
         console.log(error);
         alert("Não foi possível atualizar os totais.")
     }
 }
 
-function expenseDelete() {
+function formClear() {
+    expense.value = "";
+    category.value = "";
+    amount.value = "";
 
+    expense.focus();
 }
 
 expenseList.addEventListener("click", (event) => {
     if (event.target.classList.contains("remove-icon")) {
-        console.log(event)
         const item = event.target.closest(".expense");
 
         item.remove();
