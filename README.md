@@ -2,9 +2,9 @@
 
 ### [MBA] Fundamentos do Desenvolvimento Web
 
-mba-refound
+mba-refund
 
-https://afonsolimajr.github.io/mba-refound/
+https://afonsolimajr.github.io/mba-refund/
 
 Página web com objetivo de aplicar os conhecimentos adquiridos nas aulas de fundamentos do desenvolvimento web.
 
